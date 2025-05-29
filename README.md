@@ -1,18 +1,22 @@
-# config_ambiente
-Configuração de Ambiente de Trabalho
-## 📌 Atualizar o Ubuntu Server
+# ⚙️ Configuração de Ambiente de Trabalho
+
+## 🟠 Atualizar o Ubuntu Server
 ```sh
 sudo apt update && sudo apt upgrade
 ```
 
-## 📌 Instalar Node.js e npm
+## 🟢 Instalar Node.js
 ```sh
 curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
 sudo apt-get install nodejs -y
+```
+
+## 📦 Instalar o npm caso não tenha sido instalado com o node.js
+```sh
 sudo apt install npm
 ```
 
-## 📌 Instalar pacotes essenciais para Python/Django
+## 🐍 Instalar pacotes essenciais para Python
 ```sh
 sudo apt install -y python3-venv python3-dev default-libmysqlclient-dev build-essential
 ```
@@ -21,14 +25,14 @@ sudo apt install -y python3-venv python3-dev default-libmysqlclient-dev build-es
 - default-libmysqlclient-dev → Para usar MySQL como banco de dados
 - build-essential → Para compilar extensões nativas
 
-## 📌 Instalar o MySQL Server
+## 🐬 Instalar o MySQL Server
 ```sh
 sudo apt install mysql-server
 sudo systemctl enable mysql
 sudo systemctl start mysql
 ```
 
-## 📌 Reforçar a segurança do MySQl
+## 🔐 Reforçar a segurança do MySQL
 ```sh
 sudo mysql_secure_installation
 ```
@@ -40,7 +44,7 @@ sudo mysql_secure_installation
 - Remove test database and access to it (N)
 - Reload privilege tables now (Y)
 
-## 📌 Criar usuario para acesso ao db MySQL 
+## 👤 Criar usuario para acesso ao db MySQL 
 ```sh
 sudo mysql -e "CREATE USER 'usuario'@'localhost' IDENTIFIED BY 'sua_senha';"
 sudo mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'usuario'@'localhost';"
@@ -52,19 +56,19 @@ sudo mysql -e "FLUSH PRIVILEGES;"
 
 ```
 
-## 📌 Instalar Tmux (Multiplex de terminal)
+## 🖥️ Instalar Tmux (Multiplex de terminal)
 ```sh
 sudo apt install tmux
 ```
 
-## 📌 Atualizar o editor vim
+## ⌨️ Atualizar o editor vim
 ```sh
 sudo add-apt-repository ppa:jonathonf/vim
 sudo apt update
 sudo apt install vim
 ```
 
-## 📌 Instalar o ZSH
+## 🐚 Instalar o ZSH
 ```sh
 sudo apt install zsh
 ```
@@ -74,14 +78,16 @@ sudo apt install zsh
 ```sh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
-## 📌 Configuração extra para Zsh
+
+## ⚙️ Configuração extra para Zsh
 ##### No Oh My Zsh, adicionar plugins úteis no .zshrc, como autossugestões e realce de sintaxe
 
 ```sh
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 ```
-## 📌 Editar dotfile .zshrc
+
+## ⚙️ Editar dotfile .zshrc
 ```sh
 vim .zshrc
 ```
@@ -91,26 +97,24 @@ vim .zshrc
 > source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 > source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-## 📌 Configurar ZSH como shell padrão
+## 🧰 Configurar ZSH como shell padrão
 ```sh
 chsh -s $(which zsh)
 ```
 
-## 📌 Instala o pipx
+## 📦 Instala o pipx
 ```sh
 sudo apt install pipx
 pipx ensurepath
 ```
 
-## 📌 Instala o poetry
+## 📦 Instala o poetry
 ```sh
 pipx install poetry
 pipx inject poetry poetry-plugin-shell
 ```
 
-
-
-## 📌 Personalizar o VIM
+## 🛠️ Personalizar o VIM
 Copiar pacotes no diretório ~/.vim/pack/git-plugins/start
 
 ##### vim-startify
