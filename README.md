@@ -18,8 +18,9 @@ sudo apt install npm
 
 ## 🐍 Instalar pacotes essenciais para Python
 ```sh
-sudo apt install -y python3-venv python3-dev default-libmysqlclient-dev build-essential
+sudo apt install -y pkg-config python3-venv python3-dev default-libmysqlclient-dev build-essential
 ```
+- pkg-config → Ferramenta auxiliar que coleta metadados sobre bibliotecas instaladas
 - python3-venv → Para criar ambientes virtuais
 - python3-dev → Para compilar pacotes Python nativos
 - default-libmysqlclient-dev → Para usar MySQL como banco de dados
@@ -112,6 +113,68 @@ pipx ensurepath
 ```sh
 pipx install poetry
 pipx inject poetry poetry-plugin-shell
+```
+
+## 🐍 Instalar versões do python
+```sh
+poetry python install 3.xx
+```
+
+## 🐍 Selecionar versões do python (no diretorio raiz do projeto)
+```sh
+poetry env use 3.xx
+```
+
+## 📦 Entrar no ambiente virtual
+```sh
+poetry shell
+```
+
+## ⌨️ Crias arquivo pyproject.toml (Se não existir)
+```sh
+poetry init
+```
+
+## 📦 Instalar dependencia de arquivo requirements.txt
+```sh
+poetry add $(cat requirements.txt)
+```
+
+## 📦 Instalar Ruff - Linter e Formatador del código
+```sh
+poetry add --group dev ruff
+```
+
+## ⚙️ Configuração do Ruff
+Adicionar as linhas abaixo no arquivo pyproject.toml
+```
+[tool.ruff]
+line-length = 79
+extend-exclude = ['migrations']
+
+[tool.ruff.lint]
+preview = true
+select = ["I", "F", "E", "W", "PL", "PT"]
+
+[tool.ruff.formar]
+preview = true
+🚡quote-style = "double"
+```
+
+## Gera uma nova chave SSH (caso ainda não tenha)
+```
+ssh-keygen -t ed25519 -C "seu-email@exemplo.com"
+```
+
+## Adicione sua chave ao agente
+ ```
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+```
+
+## Copiar a chave pública e adicionar no github
+```
+cat ~/.ssh/id_ed25519.pub
 ```
 
 ## 🛠️ Personalizar o VIM
@@ -208,6 +271,13 @@ git clone https://github.com/ryanoasis/vim-devicons.git ~/.vim/pack/git-plugins/
 git clone https://github.com/dense-analysis/ale.git ~/.vim/pack/git-plugins/start/ale
 git clone --branch release https://github.com/neoclide/coc.nvim.git ~/.vim/pack/git-plugins/start/coc.nvim
 ```
+
+
+
+
+
+
+
 
 1. Instalar os linters e formatadores para Python (Pylint, Flake8, Black)
 ```sh
